@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html>
+  <head>
+    <title>MeteoSPA Open-Meteo</title>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <main>
+  </head>
+  <body>
+    <!-- Saisie de la ville -->
+    <section>
+      <input id="city" placeholder="Ville..." />
+      <button class="button" onclick="rechercheVille()">🔍</button>
+      <br />
+    </section>
 
-    </main>
-</body>
-<script src="script.js"></script>
+    <!-- Saisie de latitude et longitude -->
+    <section>
+      <input id="lat" placeholder="latitude..." />
+      <input id="lon" placeholder="longitude..." />
+      <br /><br />
+    </section>
+    <!-- Zone d'affichage des résultats météo -->
+    <div id="result"></div>
+
+    <div>
+    <button class="ma position" onclick="getMyPosition()">Chez moi ?</button>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>

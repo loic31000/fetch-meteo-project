@@ -1,3 +1,55 @@
-body{
-    margin : 0px;
+body {
+  width: 100vw; /* 100% de la largeur de la fenêtre */
+  height: 100vh; /* 100% de la hauteur de la fenêtre */
+  margin: 0;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 18px;
+}
+
+button {
+  padding: 0;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  height: 68px;
+  width: 66px;
+}
+
+.ma.position {
+  height: 66px;
+  width: 149px;
+  margin: 40px;
+}
+
+#result {
+  display: grid;
+}
+
+#city {
+  width: 445px;
+  height: 62px;
+}
+
+#lon {
+  width: 241px;
+}
+
+#lat {
+  width: 260px;
+  height: 62px;
 }
