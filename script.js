@@ -1,31 +1,13 @@
-// Fonction qui retourne un emoji météo selon le code et si c'est le jour (true) ou la nuit (false)
 function getIconMeteo(code, isDay) {
-  // Si code vaut 0 : ciel clair -> soleil le jour, lune la nuit
-  if (code === 0) return isDay ? "icon/10.jpg" : "icon/00"; // ciel clair
-
-  // Si code est 1, 2 ou 3 : nuages partiels/plus de nuages -> afficher un emoji "partiellement nuageux" selon le jour
-  if ([1, 2, 3].includes(code)) return isDay ? "⛅" : "🌥️"; // nuageux partiel ou couvert
-
-  // Brouillard (codes 45 et 48) : même emoji de brouillard quelle que soit l'heure
-  if ([45, 48].includes(code)) return "🌫️"; // brouillard
-
-  // Bruine légère (codes 51, 53, 55) : emoji pluie légère
-  if ([51, 53, 55].includes(code)) return "🌦️"; // bruine
-
-  // Pluie (codes 61, 63, 65 et 80, 81, 82 pour averses) : emoji pluie
-  if ([61, 63, 65, 80, 81, 82].includes(code)) return "🌧️"; // pluie
-
-  // Pluie verglaçante ou pluies glacées (codes 66, 67)
-  if ([66, 67].includes(code)) return "🌨️"; // pluie verglaçante
-
-  // Neige (codes 71, 73, 75, 77, 85, 86)
-  if ([71, 73, 75, 77, 85, 86].includes(code)) return "❄️"; // neige
-
-  // Orages (codes 95, 96, 99) : emoji orageux
-  if ([95, 96, 99].includes(code)) return "⛈️"; // orage
-
-  // Par défaut : on ne reconnaît pas le code, retourner un point d'interrogation
-  return "❔"; // inconnu
+  console.log("Code météo :", code, "Jour ?", isDay);
+  if (code === 0) return isDay ? "icon/soleil.png" : "icon/nuit.png";
+  if ([1, 2, 3].includes(code))
+    return isDay ? "icon/nuageux_partiel.png" : "icon/couvert.png";
+  if ([51, 53, 55].includes(code)) return "icon/bruine.jpg";
+  if ([61, 63, 65, 80, 81, 82].includes(code)) return "icon/pluie.png";
+  if ([66, 67].includes(code)) return "icon/pluie_verglacante.png";
+  if ([95, 96, 99].includes(code)) return "icon/orage.png";
+  return "icon/inconnu.png"; // crée une image inconnue en PNG
 }
 
 // S'execute quand l'utilisateur accepte la géolocalisation
@@ -158,10 +140,13 @@ function afficherMeteo(latitude, longitude, nom = "") {
       resultDiv.appendChild(h2);
 
       // Crée un div pour afficher l'emoji météo avec une grande taille de police
-      const iconDiv = document.createElement("div");
-      iconDiv.style.fontSize = "420px";
-      iconDiv.textContent = icon;
-      resultDiv.appendChild(iconDiv);
+      const iconeSrc = getIconMeteo(code, isDay);
+      const imageIcone = document.createElement("img");
+      imageIcone.src = iconeSrc;
+      imageIcone.alt = "Icône météo";
+      imageIcone.style.width = "500px"; // Ajuste la taille
+      imageIcone.style.height = "500px";
+      resultDiv.appendChild(imageIcone);
 
       // Crée un div pour afficher la température actuelle
       const tempDiv = document.createElement("div");
