@@ -38,9 +38,13 @@ Pour éviter les restrictions de sécurité des navigateurs (erreurs CORS) lors 
   Installez l'extension **Live Server** dans Visual Studio Code. Faites un clic droit sur votre fichier `index.html` puis sélectionnez **Open with Live Server**.
 
 * **Via Python :**
+  <details>
+  <summary><b>▶ Cliquez ici pour afficher la commande Python</b></summary>
+
   Lancez un serveur instantané dans votre terminal à la racine du projet :
   ```bash
   python3 -m http.server 1212
+
 ```
 
 Accédez ensuite à l'application sur [http://localhost:1212](https://www.google.com/search?q=http://localhost:1212).
@@ -50,19 +54,21 @@ Accédez ensuite à l'application sur [http://localhost:1212](https://www.google
 Cette méthode utilise un conteneur léger basé sur Apache (`httpd:2.4`) pour héberger l'application.
 
 1. **Construire l'image Docker (en minuscules) :**
+
 ```bash
 docker build -t dom-vanilla .
-```
 
+```
 
 2. **Créer et lancer le conteneur en arrière-plan :**
+
 ```bash
 docker run -d -p 1212:80 --name twelve-project dom-vanilla
+
 ```
 
-
 3. **Accéder à l'application :**
-Ouvrez votre navigateur sur [http://localhost:1212](https://www.google.com/search?q=http://localhost:1212).
+Ouvrez votre navigateur sur [http://localhost:1212](http://localhost:1212).
 
 ---
 
@@ -72,10 +78,11 @@ Ouvrez votre navigateur sur [http://localhost:1212](https://www.google.com/searc
 * **Relancer l'application :** `docker start twelve-project`
 * **Re-buider après modification (sans cache) :** ```bash
 docker rm -f twelve-project && docker build --no-cache -t dom-vanilla . && docker run -d -p 1212:80 --name twelve-project dom-vanilla
-```
 
----
+```
 
 ## ⚠️ Notes techniques sur la Géolocalisation
 
 L'implémentation de l'API native `navigator.geolocation` dépend fortement des politiques de sécurité des navigateurs (ex: restrictions strictes sur Firefox ou Chromium sans HTTPS).
+
+```
