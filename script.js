@@ -4,26 +4,26 @@ function getIconMeteo(code, isDay) {
   console.log("Code météo :", code, "Jour ?", isDay);
 
   // Si le code météo est 0 (ciel clair), on retourne l'image du soleil si jour, ou de la nuit si nuit
-  if (code === 0) return isDay ? "icon/soleil.png" : "icon/nuit.png";
+  if (code === 0) return isDay ? "/icon/soleil.png" : "icon/nuit.png";
 
   // Si le code est 1, 2 ou 3 (nuages partiels ou couverts), on retourne l'icône jour ou nuit
   if ([1, 2, 3].includes(code))
-    return isDay ? "icon/nuageux_partiel.png" : "icon/couvert.png";
+    return isDay ? "/icon/nuageux_partiel.png" : "icon/couvert.png";
 
   // Si le code est 51, 53 ou 55 (bruine), on retourne l'icône bruine
-  if ([51, 53, 55].includes(code)) return "icon/bruine.jpg";
+  if ([51, 53, 55].includes(code)) return "/icon/bruine.jpg";
 
   // Si le code indique pluie ou averses (61, 63, 65, 80, 81, 82), on affiche l'icône pluie
-  if ([61, 63, 65, 80, 81, 82].includes(code)) return "icon/pluie.png";
+  if ([61, 63, 65, 80, 81, 82].includes(code)) return "/icon/pluie.png";
 
   // Si le code indique pluie verglaçante (66, 67), on affiche l'icône adaptée
-  if ([66, 67].includes(code)) return "icon/pluie_verglacante.png";
+  if ([66, 67].includes(code)) return "/icon/pluie_verglacante.png";
 
   // Si orages (codes 95, 96, 99), on affiche l'icône orage
-  if ([95, 96, 99].includes(code)) return "icon/orage.png";
+  if ([95, 96, 99].includes(code)) return "/icon/orage.png";
 
   // Si aucun code connu, on retourne une image d'icône inconnue
-  return "icon/inconnu.png";
+  return "/icon/inconnu.png";
 }
 
 // Fonction asynchrone appelée lorsque la géolocalisation réussit (utilisateur accepte)

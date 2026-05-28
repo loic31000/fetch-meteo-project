@@ -1,8 +1,10 @@
 body {
-  width: 120vw; /* 100% de la largeur de la fenêtre */
-  height: 120vh; /* 100% de la hauteur de la fenêtre */
+  width: 100vw;       /* Prend exactement 100% de la largeur disponible */
+  min-height: 100vh;  /* Fait AU MOINS 100% de la hauteur, mais peut s'étendre si le contenu grandit */
   margin: 0;
+  box-sizing: border-box; /* Évite que les paddings/borders ne fassent grossir le body */
   background: linear-gradient(#ddd5d5, #227fd0);
+  overflow-x: hidden; /* Sécurité pour empêcher le scroll horizontal quoi qu'il arrive */
 }
 
 section {
